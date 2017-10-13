@@ -1,6 +1,7 @@
 package com.cosmo.arquitecturamvpbase.views.activities;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
@@ -22,7 +23,7 @@ import static com.cosmo.arquitecturamvpbase.R.styleable.NavigationView;
  * Created by leidycarolinazuluagabastidas on 13/10/17.
  */
 
-public class MenuActivity extends BaseActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class MenuActivity extends BaseActivity implements NavigationView.OnNavigationItemSelectedListener  {
 
     private Toolbar toolbar;
     private FragmentTransaction fragmentTransaction;
@@ -32,25 +33,18 @@ public class MenuActivity extends BaseActivity implements NavigationView.OnNavig
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
-        //setSupportActionBar(toolbar);
+        setSupportActionBar(toolbar);
 
-        configureMeu();
-    }
-
-    private void configureMeu() {
         DrawerLayout drawerLayout = (DrawerLayout) findViewById(R.id.menuActivity_drawerLayout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar,
                 R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
-        /*Fragment fragment = new DashBoardFragment();
-        getSupportFragmentManager().beginTransaction().replace(R.id.content_layout, fragment).commit();*/
-
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-
     }
+
 
     @Override
     public void onBackPressed() {
@@ -62,21 +56,30 @@ public class MenuActivity extends BaseActivity implements NavigationView.OnNavig
         }
     }
 
-    @SuppressWarnings("StatementWithEmptyBody")
+   @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
 
 
         boolean fragmentTransactio = false;
-        Fragment fragment = null;
+        //final Fragment fragment = null;
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
         if (id == R.id.nav_inicio) {
 
-            fragment = new DashBoardFragment();
+            final Fragment fragment = new DashBoardFragment();
             fragmentTransactio = true;
             getSupportActionBar().setTitle("Inicio");
+
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+                    fragmentTransaction.replace(R.id.content_layout, fragment);
+                    fragmentTransaction.commit();
+                }
+            },200);
 
             // Handle the camera action
         } else if (id == R.id.nav_perfil) {
@@ -89,16 +92,12 @@ public class MenuActivity extends BaseActivity implements NavigationView.OnNavig
             finish();
 
         }
-        if (fragmentTransactio) {
-           /* Fragment fragment1 = new DashBoardFragment();
-            FragmentManager fragmentManager = getSupportFragmentManager();
-            fragmentTransaction = fragmentManager.beginTransaction();
-            fragmentTransaction.add(R.id.frame_content, fragment1, "");
-            fragmentTransaction.commit();*/
+       /*if (fragment != null) {
 
-           getSupportFragmentManager().beginTransaction().replace(R.id.frame_content, fragment).commit();
-            item.setChecked(true);
-        }
+
+
+
+        }*/
 
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.menuActivity_drawerLayout);
@@ -107,4 +106,7 @@ public class MenuActivity extends BaseActivity implements NavigationView.OnNavig
 
 
     }
+
+
+
 }

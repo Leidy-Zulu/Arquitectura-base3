@@ -76,11 +76,11 @@ public class ProductsFragment extends BaseFragment<ProductPresenter> implements 
         });
     }
 
-    @Override
+    /*@Override
     public void onResume() {
         super.onResume();
         swipRefresh.setRefreshing(true);
-    }
+    }*/
 
     @Override
     public void showProductList(final ArrayList<Product> productArrayList) {
