@@ -3,6 +3,7 @@ package com.cosmo.arquitecturamvpbase.repository;
 import com.cosmo.arquitecturamvpbase.helper.ServicesFactory;
 import com.cosmo.arquitecturamvpbase.model.DeleteResponse;
 import com.cosmo.arquitecturamvpbase.model.Product;
+import com.cosmo.arquitecturamvpbase.model.User;
 import com.cosmo.arquitecturamvpbase.services.IServices;
 
 import java.util.ArrayList;
@@ -44,5 +45,18 @@ public class ProductRepository implements IProductRepository {
             throw  MapperError.convertRetrofitErrorToRepositoryError(retrofitError);
         }
 
+    }
+
+    @Override
+    public User login(String user, String password) throws RepositoryError {
+
+        try {
+
+            User userLogin =  services.login(user, password);
+            return userLogin;
+
+        }catch (RetrofitError retrofitError){
+           throw  MapperError.convertRetrofitErrorToRepositoryError(retrofitError);
+        }
     }
 }

@@ -16,6 +16,8 @@ import com.cosmo.arquitecturamvpbase.R;
 import com.cosmo.arquitecturamvpbase.views.BaseActivity;
 import com.cosmo.arquitecturamvpbase.views.fragments.DashBoardFragment;
 
+import static com.cosmo.arquitecturamvpbase.R.styleable.NavigationView;
+
 /**
  * Created by leidycarolinazuluagabastidas on 13/10/17.
  */

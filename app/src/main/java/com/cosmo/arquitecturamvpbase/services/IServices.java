@@ -2,6 +2,7 @@ package com.cosmo.arquitecturamvpbase.services;
 
 import com.cosmo.arquitecturamvpbase.model.DeleteResponse;
 import com.cosmo.arquitecturamvpbase.model.Product;
+import com.cosmo.arquitecturamvpbase.model.User;
 
 import java.util.ArrayList;
 
@@ -10,6 +11,7 @@ import retrofit.http.DELETE;
 import retrofit.http.GET;
 import retrofit.http.POST;
 import retrofit.http.Path;
+import retrofit.http.Query;
 
 /**
  * Created by leidyzulu on 16/09/17.
@@ -25,4 +27,8 @@ public interface IServices {
 
     @DELETE("/products/{id}")
     DeleteResponse deleteProduct(@Path("id")String id);
+
+    @GET("/user/auth")
+    User login(@Query("email") String user,@Query("password") String password);
+
 }

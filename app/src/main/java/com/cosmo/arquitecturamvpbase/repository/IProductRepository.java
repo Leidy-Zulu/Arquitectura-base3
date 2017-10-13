@@ -2,6 +2,7 @@ package com.cosmo.arquitecturamvpbase.repository;
 
 import com.cosmo.arquitecturamvpbase.model.DeleteResponse;
 import com.cosmo.arquitecturamvpbase.model.Product;
+import com.cosmo.arquitecturamvpbase.model.User;
 
 import java.util.ArrayList;
 
@@ -18,4 +19,6 @@ public interface IProductRepository {
 
 
     DeleteResponse deleteProduct(String id) throws RepositoryError;
+
+    User login(String user, String password) throws  RepositoryError;
 }
