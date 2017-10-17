@@ -59,4 +59,19 @@ public class ProductRepository implements IProductRepository {
            throw  MapperError.convertRetrofitErrorToRepositoryError(retrofitError);
         }
     }
+
+    @Override
+    public User autologin(String token) throws RepositoryError {
+
+        try {
+
+            String bearerToken = "Bearer: " +  token;
+
+            User user =  services.autoLogin(bearerToken);
+            return user;
+
+        }catch (RetrofitError retrofitError){
+            throw  MapperError.convertRetrofitErrorToRepositoryError(retrofitError);
+        }
+    }
 }

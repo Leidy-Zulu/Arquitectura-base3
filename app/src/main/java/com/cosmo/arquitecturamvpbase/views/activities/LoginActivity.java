@@ -23,15 +23,25 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements ILogi
     private TextView login_etUser;
     private TextView login_etPassword;
     private Button login_btnLogin;
+    private CustomSharedPreferences customSharedPreferences;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setPresenter(new LoginPresenter(new ProductRepository()));
         getPresenter().inject(this, getValidateInternet());
+        customSharedPreferences =  new CustomSharedPreferences(this);
         setContentView(R.layout.activity_login);
         createProgressDialog();
         loadViews();
+        verifyAutoLogin();
+    }
+
+    private void verifyAutoLogin() {
+        if(customSharedPreferences.getObjectUser(Constants.USER) != null){
+            User user = customSharedPreferences.getObjectUser(Constants.USER);
+            getPresenter().autoLogin(user.getToken());
+        }
     }
 
     private void loadViews() {
@@ -58,7 +68,13 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements ILogi
         startActivity(intent);
     }
 
-        @Override
+    @Override
+    public void showDashBoard() {
+        Intent intent = new Intent(this, DashboardActivity.class);
+        startActivity(intent);
+    }
+
+    @Override
         public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
         }

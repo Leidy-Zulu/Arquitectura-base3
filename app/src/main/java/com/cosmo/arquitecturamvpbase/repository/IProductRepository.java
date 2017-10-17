@@ -21,4 +21,6 @@ public interface IProductRepository {
     DeleteResponse deleteProduct(String id) throws RepositoryError;
 
     User login(String user, String password) throws  RepositoryError;
+
+    User autologin(String token) throws  RepositoryError;
 }

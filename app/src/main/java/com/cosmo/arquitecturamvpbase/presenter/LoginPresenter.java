@@ -54,4 +54,37 @@ public class LoginPresenter extends BasePresenter<ILoginView> {
 
 
     }
+
+    public void autoLogin(String token) {
+        if(getValidateInternet().isConnected()){
+            createThreadautoLogin(token);
+        }else{
+            //TODO
+        }
+    }
+
+    private void createThreadautoLogin(final String token) {
+        getView().showProgress(R.string.loading_message);
+        Thread thread =  new Thread(new Runnable() {
+            @Override
+            public void run() {
+                autoLoginInRepository(token);
+            }
+        });
+        thread.start();
+    }
+
+    private void autoLoginInRepository(String token) {
+
+        try {
+            productRepository.autologin(token);
+            getView().showDashBoard();
+
+        }catch (RepositoryError repositoryError){
+            //TODO
+        }finally {
+            getView().hideProgress();
+        }
+
+    }
 }

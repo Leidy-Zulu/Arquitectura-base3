@@ -37,5 +37,6 @@
     <string name="action_settings">Settings</string>
     <string name="text_user">Usuario</string>
     <string name="text_password">Contraseña</string>
+    <string name="log_out">Cerrar sesión</string>
 
 </resources>

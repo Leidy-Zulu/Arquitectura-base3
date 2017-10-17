@@ -9,4 +9,6 @@ import com.cosmo.arquitecturamvpbase.views.IBaseView;
 
 public interface ILoginView extends IBaseView {
     void showDashBoard(User userLogin);
+
+    void showDashBoard();
 }

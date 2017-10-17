@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import retrofit.http.Body;
 import retrofit.http.DELETE;
 import retrofit.http.GET;
+import retrofit.http.Header;
 import retrofit.http.POST;
 import retrofit.http.Path;
 import retrofit.http.Query;
@@ -30,5 +31,9 @@ public interface IServices {
 
     @GET("/user/auth")
     User login(@Query("email") String user,@Query("password") String password);
+
+
+    @GET("/user")
+    User autoLogin(@Header("Authorization") String token);
 
 }
