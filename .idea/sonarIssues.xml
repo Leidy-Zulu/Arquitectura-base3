@@ -3,21 +3,6 @@
   <component name="issues">
     <option name="index">
       <map>
-        <entry key="$USER_HOME$/Documents/Proyectos/auditoria/app/src/main/res/layout/activity_principal.xml">
-          <value>
-            <set />
-          </value>
-        </entry>
-        <entry key="$USER_HOME$/Documents/Proyectos/auditoria/app/src/main/res/layout/content_principal.xml">
-          <value>
-            <set />
-          </value>
-        </entry>
-        <entry key="$USER_HOME$/Documents/Proyectos/auditoria/app/src/main/res/values/strings.xml">
-          <value>
-            <set />
-          </value>
-        </entry>
         <entry key="$PROJECT_DIR$/../Arquitectura-base-master 2/app/src/main/java/com/cosmo/arquitecturamvpbase/views/fragments/ProductsFragment.java">
           <value>
             <set />
@@ -38,7 +23,22 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/com/cosmo/arquitecturamvpbase/helper/CustomSharedPreferences.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/com/cosmo/arquitecturamvpbase/presenter/LoginPresenter.java">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/app/src/main/java/com/cosmo/arquitecturamvpbase/views/activities/DashboardActivity.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/com/cosmo/arquitecturamvpbase/views/activities/LoginActivity.java">
           <value>
             <set />
           </value>
@@ -114,6 +114,21 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/app/src/main/res/values/styles.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../auditoria/app/src/main/res/layout/activity_principal.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../auditoria/app/src/main/res/layout/content_principal.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../auditoria/app/src/main/res/values/strings.xml">
           <value>
             <set />
           </value>

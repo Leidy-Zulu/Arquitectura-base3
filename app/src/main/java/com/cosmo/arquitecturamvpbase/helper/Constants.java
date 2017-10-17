@@ -18,5 +18,6 @@ public class Constants {
     public static final String TITLE_PRODUCT = "Productos";
     public static final String EMPTY = "";
     public static final int FIVE = 5;
-
+    public static final String MY_PREFERENCES = "myPreferences";
+    public static final String USER = "user";
 }

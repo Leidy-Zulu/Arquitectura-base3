@@ -1,5 +1,6 @@
 package com.cosmo.arquitecturamvpbase.views.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.text.Editable;
@@ -11,6 +12,7 @@ import android.widget.Toast;
 
 import com.cosmo.arquitecturamvpbase.R;
 import com.cosmo.arquitecturamvpbase.helper.Constants;
+import com.cosmo.arquitecturamvpbase.helper.CustomSharedPreferences;
 import com.cosmo.arquitecturamvpbase.model.User;
 import com.cosmo.arquitecturamvpbase.presenter.LoginPresenter;
 import com.cosmo.arquitecturamvpbase.repository.ProductRepository;
@@ -28,6 +30,7 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements ILogi
         setPresenter(new LoginPresenter(new ProductRepository()));
         getPresenter().inject(this, getValidateInternet());
         setContentView(R.layout.activity_login);
+        createProgressDialog();
         loadViews();
     }
 
@@ -49,12 +52,10 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements ILogi
 
     @Override
     public void showDashBoard(User userLogin) {
-        runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                Toast.makeText(LoginActivity.this, "Entró", Toast.LENGTH_SHORT).show();
-            }
-        });
+        CustomSharedPreferences customSharedPreferences = new CustomSharedPreferences(this);
+        customSharedPreferences.saveObjectUser(Constants.USER, userLogin);
+        Intent intent = new Intent(this, DashboardActivity.class);
+        startActivity(intent);
     }
 
         @Override

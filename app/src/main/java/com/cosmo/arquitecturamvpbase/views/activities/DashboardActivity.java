@@ -8,6 +8,8 @@ import android.support.v4.view.ViewPager;
 
 import com.cosmo.arquitecturamvpbase.R;
 import com.cosmo.arquitecturamvpbase.helper.Constants;
+import com.cosmo.arquitecturamvpbase.helper.CustomSharedPreferences;
+import com.cosmo.arquitecturamvpbase.model.User;
 import com.cosmo.arquitecturamvpbase.views.BaseActivity;
 import com.cosmo.arquitecturamvpbase.views.adapter.DashBoardTabsAdapter;
 
@@ -25,6 +27,9 @@ public class DashboardActivity extends BaseActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
+        CustomSharedPreferences customSharedPreferences = new CustomSharedPreferences(this);
+        User user = customSharedPreferences.getObjectUser(Constants.USER);
+        customSharedPreferences.deleteValue(Constants.USER);
         loadViews();
         loadDashBoardTabsAdapter();
     }

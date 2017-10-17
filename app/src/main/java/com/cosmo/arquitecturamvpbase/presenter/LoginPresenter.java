@@ -1,5 +1,6 @@
 package com.cosmo.arquitecturamvpbase.presenter;
 
+import com.cosmo.arquitecturamvpbase.R;
 import com.cosmo.arquitecturamvpbase.model.User;
 import com.cosmo.arquitecturamvpbase.repository.IProductRepository;
 import com.cosmo.arquitecturamvpbase.repository.ProductRepository;
@@ -27,6 +28,7 @@ public class LoginPresenter extends BasePresenter<ILoginView> {
     }
 
     private void createThreadLogin(final String user, final String password) {
+        getView().showProgress(R.string.loading_message);
         Thread thread =  new Thread(new Runnable() {
             @Override
             public void run() {
@@ -45,6 +47,8 @@ public class LoginPresenter extends BasePresenter<ILoginView> {
 
         }catch (RepositoryError repositoryError){
             //TODO
+        }finally {
+            getView().hideProgress();
         }
 
 
